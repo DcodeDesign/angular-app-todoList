@@ -1,0 +1,31 @@
+<div class="container-todo-list mat-elevation-z2">
+  <mat-form-field class="field-task" appearance="fill">
+    <mat-label>Note : </mat-label>
+    <input #taskDesc matInput maxlength="255" (keydown)="onKey($event); addMessage($event)">
+    <mat-hint align="end">{{taskDesc.value.length}} / 255</mat-hint>
+  </mat-form-field>
+  <div class="content-list" >
+    <mat-list role="list" #nbrTasks>
+      <mat-list-item appTooltipTask role="listitem" class="listtask" *ngFor="let task of tasks">
+        <span [ngClass]="(task.finish === true)?'strike-txt':''"
+        class="badge">{{task.description}}</span>
+        <div class="tooltip-task">
+          <button mat-icon-button matTooltip="Marquer comme terminé" aria-label="Done: task.desc" (click)="finishTask(task)">
+            <mat-icon>{{ task.finish ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Modifier la tâche" aria-label="Modify : task.desc"
+          (click)="onSelect(task)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Supprimer la tâche" aria-label="Done : task.finish" (click)="delete(task)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <mat-divider *ngIf="tasks.length > 1" ></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="count-task">
+    {{tasks.length}} Notes
+  </div>
+</div>

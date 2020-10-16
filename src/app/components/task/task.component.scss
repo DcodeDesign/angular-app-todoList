@@ -1,0 +1,43 @@
+.container-todo-list {
+  margin:20px;
+  border-radius: 4px;
+  .count-task{
+      text-align: center;
+      color:grey;
+      padding:5px;
+  }
+  .field-task {
+    width:100%;
+  }
+  .content-list {
+    margin-top:-20px;
+    .mat-list{
+      padding-top: 0;
+      .strike-txt{
+        text-decoration: line-through;
+        color:grey;
+      }
+      .tooltip-task {
+        visibility: hidden;
+        opacity: 0;
+        z-index:999;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color:rgba(240, 240, 240, 1);
+        padding: 3px;
+        transition: all .5s;
+        margin-right:-30px;
+      }
+      .listtask.show .tooltip-task {
+        opacity: 1;
+        visibility: visible;
+        margin-right:0;
+        background-color:rgba(255, 255, 255, 1);
+      }
+  
+    }
+  }
+
+}
